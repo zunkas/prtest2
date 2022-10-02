@@ -92,7 +92,7 @@ jobs:
           path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/systemtests
 
       - name: Nuget pack
-        run: dotnet pack ${{ inputs.SdkCsprojPath }} -p:PackageVersion=${{ inputs.NUGETVERSIONV2 }} -p:Version=${{ inputs.NUGETVERSIONV2 }} --configuration=${{ inputs.Configuration }} --output=artifacts
+        run: dotnet pack ${{ inputs.SlnPath }} -p:PackageVersion=${{ inputs.NUGETVERSIONV2 }} -p:Version=${{ inputs.NUGETVERSIONV2 }} --no-restore --configuration=${{ inputs.Configuration }} --output=artifacts
 
       - name: Archive nuget packages artifacts
         uses: actions/upload-artifact@v3
