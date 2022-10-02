@@ -40,7 +40,7 @@ jobs:
         run: dotnet test Sdk.UnitTests/SwedbankPay.Sdk.Tests.dll
 
       - name: Run SDK Integration Tests
-        run: dotnet test Sdk.IngerationTests/SwedbankPay.Sdk.IntegrationTests.dll
+        run: dotnet test Sdk.IntegrationTests/SwedbankPay.Sdk.IntegrationTests.dll
         env:
           SwedbankPay:Token: ${{ secrets.MERCHANT_TOKEN }}
           SwedbankPay:TokenMobilePay: ${{ secrets.MERCHANT_TOKEN_MOBILE_PAY }}
