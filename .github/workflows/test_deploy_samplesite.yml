@@ -2,7 +2,7 @@ name: Run unit and ui tests, deploy samplesite
 on:
   workflow_run:
     workflows: ["Dev", "Uat"]
-    types:
+    types: 
       - completed
 
 env:
