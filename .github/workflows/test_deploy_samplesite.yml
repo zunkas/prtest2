@@ -73,14 +73,14 @@ jobs:
       #     MerchantSettings:CheckoutValidationCallbackUri: https://${{ env.uitestUrlSubdomain }}.eu.ngrok.io/api/svea/validation/{checkout.order.uri}/?marketId={marketId}
       
 
-      # - name: Run SDK Sample project tests
-      #   run: dotnet test Sample.AspNetCore.SystemTests/Sample.AspNetCore.SystemTests.dll -v n
-      #   env:
-      #     SwedbankPay:Token: ${{ secrets.MERCHANT_TOKEN }}
-      #     SwedbankPay:TokenMobilePay: ${{ secrets.MERCHANT_TOKEN_MOBILE_PAY }}
-      #     SwedbankPay:PayeeId: ${{ secrets.MERCHANT_PAYEEID }}
-      #     SwedbankPay:ApiBaseUrl: https://api.externalintegration.payex.com
-      #     SwedbankPay:Sdk:SampleWebsite:BaseUrl: https://localhost:5001
+      - name: Run SDK Sample project tests
+        run: dotnet test Sample.AspNetCore.SystemTests/Sample.AspNetCore.SystemTests.dll -v n
+        env:
+          SwedbankPay:Token: ${{ secrets.MERCHANT_TOKEN }}
+          SwedbankPay:TokenMobilePay: ${{ secrets.MERCHANT_TOKEN_MOBILE_PAY }}
+          SwedbankPay:PayeeId: ${{ secrets.MERCHANT_PAYEEID }}
+          SwedbankPay:ApiBaseUrl: https://api.externalintegration.payex.com
+          SwedbankPay:Sdk:SampleWebsite:BaseUrl: https://localhost:5001
 
       - name: Commit Action Status
         if: ${{ always() }}
