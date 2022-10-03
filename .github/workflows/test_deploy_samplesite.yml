@@ -74,17 +74,17 @@ jobs:
       
 
       # - name: Run SDK Sample project tests
-      #  run: dotnet test Sample.AspNetCore.SystemTests/Sample.AspNetCore.SystemTests.dll -v n
-     #   env:
-      #    SwedbankPay:Token: ${{ secrets.MERCHANT_TOKEN }}
-    #      SwedbankPay:TokenMobilePay: ${{ secrets.MERCHANT_TOKEN_MOBILE_PAY }}
-    #      SwedbankPay:PayeeId: ${{ secrets.MERCHANT_PAYEEID }}
-      #    SwedbankPay:ApiBaseUrl: https://api.externalintegration.payex.com
-       #   SwedbankPay:Sdk:SampleWebsite:BaseUrl: https://localhost:5001
+      #   run: dotnet test Sample.AspNetCore.SystemTests/Sample.AspNetCore.SystemTests.dll -v n
+      #   env:
+      #     SwedbankPay:Token: ${{ secrets.MERCHANT_TOKEN }}
+      #     SwedbankPay:TokenMobilePay: ${{ secrets.MERCHANT_TOKEN_MOBILE_PAY }}
+      #     SwedbankPay:PayeeId: ${{ secrets.MERCHANT_PAYEEID }}
+      #     SwedbankPay:ApiBaseUrl: https://api.externalintegration.payex.com
+      #     SwedbankPay:Sdk:SampleWebsite:BaseUrl: https://localhost:5001
 
       - name: Commit Action Status
         if: ${{ always() }}
-        uses: LouisBrunner/checks-action@v1.1.1
+        uses: LouisBrunner/checks-action@v1.3.1
         with:
           sha: ${{ steps.source-run-info.outputs.sourceHeadSha }}
           token: ${{ secrets.GITHUB_TOKEN }}

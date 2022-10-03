@@ -24,24 +24,22 @@ jobs:
           workflow_conclusion: success
           run_id: ${{ inputs.WorkflowRunId }}
     
-
       - name: Variable Substitution
         uses: microsoft/variable-substitution@v1
         with:
          # comma separated list of XML/JSON/YAML files in which tokens are to be substituted. Files names must be specified relative to the folder-path.
            files: 'Sample.AspNetCore/appsettings.json'
         env:
-          Credentials.0.MerchantId: ${{ secrets.SWEDEN_MERCHANT_ID }}
-          Credentials.0.Secret: ${{ secrets.SWEDEN_MERCHANT_SECRET }}
-          Credentials.1.MerchantId: ${{ secrets.NORWAY_MERCHANT_ID }}
-          Credentials.1.Secret: ${{ secrets.NORWAY_MERCHANT_SECRET }}
-          Credentials.2.MerchantId: ${{ secrets.FINNISH_MERCHANT_ID }}
-          Credentials.2.Secret: ${{ secrets.FINNISH_MERCHANT_SECRET }}
-          MerchantSettings.PushUri: https://svea-webpay-sdk-001-${{ inputs.Environment }}.azurewebsites.net/api/svea/push/{checkout.order.uri}/?marketId={marketId}
-          MerchantSettings.TermsUri: https://svea-webpay-sdk-001-${{ inputs.Environment }}.azurewebsites.net/terms
-          MerchantSettings.CheckoutUri: https://svea-webpay-sdk-001-${{ inputs.Environment }}.azurewebsites.net/CheckOut/LoadPaymentMenu
-          MerchantSettings.ConfirmationUri: https://svea-webpay-sdk-001-${{ inputs.Environment }}.azurewebsites.net/checkout/thankyou
-          MerchantSettings.CheckoutValidationCallbackUri: https://svea-webpay-sdk-001-${{ inputs.Environment }}.azurewebsites.net/api/svea/validation/{checkout.order.uri}/?marketId={marketId}
+          Urls.TermsOfServiceUrl: ${{ secrets.SWEDEN_MERCHANT_ID }}
+          Urls.CallBackUrl: ${{ secrets.SWEDEN_MERCHANT_SECRET }}
+          Urls.CancelUrl: ${{ secrets.NORWAY_MERCHANT_ID }}
+          Urls.CompleteUrl: ${{ secrets.NORWAY_MERCHANT_SECRET }}
+          Urls.PaymentUrl: ${{ secrets.FINNISH_MERCHANT_ID }}
+          LogoUrl: ${{ secrets.FINNISH_MERCHANT_SECRET }}
+          HostUrls.0: https://svea-webpay-sdk-001-${{ inputs.Environment }}.azurewebsites.net/api/svea/push/{checkout.order.uri}/?marketId={marketId}
+          StandardCheckoutPaymentUrl: https://svea-webpay-sdk-001-${{ inputs.Environment }}.azurewebsites.net/terms
+          AnonymousCheckoutPaymentUrl: https://svea-webpay-sdk-001-${{ inputs.Environment }}.azurewebsites.net/CheckOut/LoadPaymentMenu
+          PaymentMenuPaymentUrl: https://svea-webpay-sdk-001-${{ inputs.Environment }}.azurewebsites.net/checkout/thankyou
       
       # - name: 'Run Azure webapp deploy using publish profile credentials'
       #   uses: azure/webapps-deploy@v2
