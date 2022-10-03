@@ -40,7 +40,7 @@ jobs:
           HostUrls.0: https://swedbankpay-sdk-001-${{ inputs.Environment }}.azurewebsites.net/
           StandardCheckoutPaymentUrl: https://swedbankpay-sdk-001-${{ inputs.Environment }}.azurewebsites.net/CheckOut/InitiateConsumerSession
           AnonymousCheckoutPaymentUrl: https://swedbankpay-sdk-001-${{ inputs.Environment }}.azurewebsites.net/CheckOut/LoadPaymentMenu
-          PaymentMenuPaymentUrl: "https://swedbankpay-sdk-001-${{ inputs.Environment }}.azurewebsites.net/CheckOut/LoadCardPaymentMenu
+          PaymentMenuPaymentUrl: https://swedbankpay-sdk-001-${{ inputs.Environment }}.azurewebsites.net/CheckOut/LoadCardPaymentMenu
       
       # - name: 'Run Azure webapp deploy using publish profile credentials'
       #   uses: azure/webapps-deploy@v2
