@@ -20,7 +20,7 @@ jobs:
     uses: ./.github/workflows/template_build.yml
     secrets: inherit
     with:
-      Configuration: Release
+      Configuration: Debug
       NUGETVERSIONV2: ${{ needs.callVersion.outputs.NUGETVERSIONV2 }} 
       SlnPath: ./src/SwedbankPay.Sdk.sln
       SdkCsprojPath: ./src/SwedbankPay.Sdk/SwedbankPay.Sdk.csproj
