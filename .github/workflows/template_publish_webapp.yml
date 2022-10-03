@@ -32,6 +32,8 @@ jobs:
          # comma separated list of XML/JSON/YAML files in which tokens are to be substituted. Files names must be specified relative to the folder-path.
            files: 'Sample.AspNetCore/appsettings.json'
         env:
+          SwedbankPay.Token: ${{ secrets.MERCHANT_TOKEN}}
+          SwedbankPay.PayeeId: ${{ secrets.MERCHANT_PAYEEID}}
           Urls.TermsOfServiceUrl: https://swedbankpay-sdk-001-${{ inputs.Environment }}.azurewebsites.net/Checkout/Thankyou
           Urls.CallBackUrl: https://swedbankpay-sdk-001-${{ inputs.Environment }}.azurewebsites.net/Checkout/Callback
           Urls.CancelUrl: https://swedbankpay-sdk-001-${{ inputs.Environment }}.azurewebsites.net/Checkout/Aborted
