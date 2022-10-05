@@ -88,10 +88,7 @@ jobs:
       - name: Copy wwwroot to publish directory
         shell: pwsh
         run: |
-          $DESTINATION = $env:DESTINATION
-          Copy-Item -Path "./src/Samples/Sample.AspNetCore/wwwroot/*" -Destination "$DESTINATION/wwwroot/" -Recurse -Force
-        env:
-          DESTINATION: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          Copy-Item -Path "./src/Samples/Sample.AspNetCore/wwwroot" -Destination "./systemtests/wwwroot" -Recurse -Force
 
       - name: Archive Sample.AspNetCore.SystemTests
         uses: actions/upload-artifact@v3
