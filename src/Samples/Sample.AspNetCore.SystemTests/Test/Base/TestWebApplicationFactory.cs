@@ -20,7 +20,7 @@ namespace Sample.AspNetCore.SystemTests.Test.Base
     {
         public string RootUri { get; set; } //Save this use by tests
 
-        private string _sampleProjectLocation = "./../../../../Sample.AspNetCore";
+        private string _sampleProjectLocation;
         IWebHost _host;
 
         public TestWebApplicationFactory()
@@ -39,6 +39,8 @@ namespace Sample.AspNetCore.SystemTests.Test.Base
             ClientOptions.BaseAddress = new Uri("https://localhost:5001"); //will follow redirects by default
 
             CreateServer(CreateWebHostBuilder());
+            
+            Console.WriteLine("Webhost created");
         }
 
         protected override TestServer CreateServer(IWebHostBuilder builder)
@@ -46,6 +48,9 @@ namespace Sample.AspNetCore.SystemTests.Test.Base
             //Real TCP port
             _host = builder.Build();
             _host.Start();
+            
+            Console.WriteLine("Webhost started");
+
             RootUri = _host.ServerFeatures.Get<IServerAddressesFeature>().Addresses.LastOrDefault();
             using (var scope = _host.Services.CreateScope())
             {
@@ -64,6 +69,7 @@ namespace Sample.AspNetCore.SystemTests.Test.Base
             var contentRoot = _sampleProjectLocation;
             if (Directory.Exists(contentRoot))
             {
+                Console.WriteLine("Directory exist");
                 builder.UseContentRoot(contentRoot);
             }
             

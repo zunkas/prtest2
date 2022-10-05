@@ -88,10 +88,10 @@ jobs:
       - name: Copy wwwroot to publish directory
         shell: pwsh
         run: |
-          $CONFIGURATION = $env:CONFIGURATION
-          Copy-Item -Path "./src/Samples/Sample.AspNetCore/wwwroot" -Destination "./src/Samples/Sample.AspNetCore.SystemTests/bin/$CONFIGURATION/publish/wwwroot" -PassThru
+          $DESTINATION = $env:DESTINATION
+          Copy-Item -Path "./src/Samples/Sample.AspNetCore/wwwroot/*" -Destination "$DESTINATION/wwwroot" -PassThru
         env:
-          CONFIGURATION: ${{ inputs.Configuration }}
+          DESTINATION: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/systemtests
 
       - name: Archive Sample.AspNetCore.SystemTests
         uses: actions/upload-artifact@v3

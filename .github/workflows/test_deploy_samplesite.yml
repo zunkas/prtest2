@@ -79,7 +79,6 @@ jobs:
           SwedbankPay:Token: ${{ secrets.MERCHANT_TOKEN }}
           SwedbankPay:TokenMobilePay: ${{ secrets.MERCHANT_TOKEN_MOBILE_PAY }}
           SwedbankPay:PayeeId: ${{ secrets.MERCHANT_PAYEEID }}
-          SwedbankPay:ApiBaseUrl: https://api.externalintegration.payex.com
           SwedbankPay:Sdk:SampleWebsite:BaseUrl: https://localhost:5001
 
       - name: Commit Action Status
