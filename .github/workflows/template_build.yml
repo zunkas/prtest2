@@ -38,6 +38,8 @@ jobs:
   build:
     name: Build SDK ${{ inputs.NUGETVERSIONV2 }}
     runs-on: ubuntu-latest
+    with:
+      configuration: ${{ inputs.Configuration }}
     
     steps:
       - uses: actions/checkout@v3
@@ -88,9 +90,9 @@ jobs:
       - name: Copy wwwroot to publish directory
         shell: pwsh
         run: |
-          Copy-Item -Path "./src/Samples/Sample.AspNetCore/wwwroot" -Destination "./src/Samples/Sample.AspNetCore.SystemTests/bin/$env:configuration/publish/wwwroot" -PassThru
-        with:
-          configuration: ${{ inputs.Configuration }}
+          Copy-Item -Path "./src/Samples/Sample.AspNetCore/wwwroot" -Destination "./src/Samples/Sample.AspNetCore.SystemTests/bin/$env:CONFIGURATION/publish/wwwroot" -PassThru
+        env:
+          CONFIGURATION: ${{ inputs.Configuration }}
 
       - name: Archive Sample.AspNetCore.SystemTests
         uses: actions/upload-artifact@v3
