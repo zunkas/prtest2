@@ -89,7 +89,7 @@ jobs:
         shell: pwsh
         run: |
           $DESTINATION = $env:DESTINATION
-          Copy-Item -Path "./src/Samples/Sample.AspNetCore/wwwroot/*" -Destination "$DESTINATION/systemtests/wwwroot" -PassThru
+          Copy-Item -Path "./src/Samples/Sample.AspNetCore/wwwroot/*" -Destination "$DESTINATION/wwwroot/" -Recurse -Force
         env:
           DESTINATION: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
