@@ -38,8 +38,6 @@ jobs:
   build:
     name: Build SDK ${{ inputs.NUGETVERSIONV2 }}
     runs-on: ubuntu-latest
-    with:
-      configuration: ${{ inputs.Configuration }}
     
     steps:
       - uses: actions/checkout@v3
