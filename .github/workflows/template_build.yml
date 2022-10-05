@@ -42,6 +42,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Copy wwwroot to publish directory
+        shell: pwsh
+        run: |
+          Write-Output $env:CONFIGURATION
+        env:
+          CONFIGURATION: ${{ inputs.Configuration }}
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v3.0.0
         with:
@@ -88,6 +95,7 @@ jobs:
       - name: Copy wwwroot to publish directory
         shell: pwsh
         run: |
+          Write-Output $env:CONFIGURATION
           Copy-Item -Path "./src/Samples/Sample.AspNetCore/wwwroot" -Destination "./src/Samples/Sample.AspNetCore.SystemTests/bin/$env:CONFIGURATION/publish/wwwroot" -PassThru
         env:
           CONFIGURATION: ${{ inputs.Configuration }}
