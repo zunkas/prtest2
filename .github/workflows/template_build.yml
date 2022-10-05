@@ -89,9 +89,9 @@ jobs:
         shell: pwsh
         run: |
           $DESTINATION = $env:DESTINATION
-          Copy-Item -Path "./src/Samples/Sample.AspNetCore/wwwroot/*" -Destination "$DESTINATION/wwwroot" -PassThru
+          Copy-Item -Path "./src/Samples/Sample.AspNetCore/wwwroot/*" -Destination "$DESTINATION/systemtests/wwwroot" -PassThru
         env:
-          DESTINATION: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/systemtests
+          DESTINATION: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
       - name: Archive Sample.AspNetCore.SystemTests
         uses: actions/upload-artifact@v3
