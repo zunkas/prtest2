@@ -85,6 +85,13 @@ jobs:
       - name: Publish Sdk Sample site system test
         run: dotnet publish --configuration ${{ inputs.Configuration }} -p:Version=${{ inputs.nuGetVersionV2 }} --no-restore ${{ inputs.SystemTestsCsprojPath }} --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/systemtests'
 
+      - name: Copy wwwroot to publish directory
+        shell: pwsh
+        run: |
+          Copy-Item -Path "./src/Samples/Sample.AspNetCore/wwwroot" -Destination "./src/Samples/Sample.AspNetCore.SystemTests/bin/$env:configuration/publish/wwwroot" -PassThru
+        with:
+          configuration: ${{ inputs.Configuration }}
+
       - name: Archive Sample.AspNetCore.SystemTests
         uses: actions/upload-artifact@v3
         with:
