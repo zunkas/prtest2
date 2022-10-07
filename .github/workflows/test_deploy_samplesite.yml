@@ -46,13 +46,13 @@ jobs:
           SwedbankPay:TokenMobilePay: ${{ secrets.MERCHANT_TOKEN_MOBILE_PAY }}
           SwedbankPay:PayeeId: ${{ secrets.MERCHANT_PAYEEID }}
 
-      - name: Run SDK Sample project tests
-        run: dotnet test Sample.AspNetCore.SystemTests/Sample.AspNetCore.SystemTests.dll -v n
-        env:
-          SwedbankPay:Token: ${{ secrets.MERCHANT_TOKEN }}
-          SwedbankPay:TokenMobilePay: ${{ secrets.MERCHANT_TOKEN_MOBILE_PAY }}
-          SwedbankPay:PayeeId: ${{ secrets.MERCHANT_PAYEEID }}
-          SwedbankPay:Sdk:SampleWebsite:BaseUrl: https://localhost:5001
+      # - name: Run SDK Sample project tests
+      #   run: dotnet test Sample.AspNetCore.SystemTests/Sample.AspNetCore.SystemTests.dll -v n
+      #   env:
+      #     SwedbankPay:Token: ${{ secrets.MERCHANT_TOKEN }}
+      #     SwedbankPay:TokenMobilePay: ${{ secrets.MERCHANT_TOKEN_MOBILE_PAY }}
+      #     SwedbankPay:PayeeId: ${{ secrets.MERCHANT_PAYEEID }}
+      #     SwedbankPay:Sdk:SampleWebsite:BaseUrl: https://localhost:5001
 
       - name: Commit Action Status
         if: ${{ always() }}
@@ -71,6 +71,9 @@ jobs:
     environment: ${{ github.event.workflow_run.name }}
 
     steps:
+      - name: Print sourceEvent
+        run: echo "sourceEvent ${{ needs.test-unit-ui.outputs.sourceEvent }}"
+
       - name: Download artifact
         id: download-artifact
         uses: dawidd6/action-download-artifact@v2
